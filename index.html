@@ -388,22 +388,28 @@
             if (tiles.length > 0) {
                 tiles.forEach(tile => {
                     tile.addEventListener('click', function(e) {
-                        e.preventDefault();
+                        // ❌ e.preventDefault(); REMOVE THIS LINE
                         const tileText = this.querySelector('.tile-text').textContent;
                         
+                        // Add animation
                         this.style.transform = 'scale(0.98)';
                         setTimeout(() => {
                             this.style.transform = '';
                         }, 200);
                         
+                        // Log for tracking
                         if (typeof console !== 'undefined' && console.log) {
                             console.log('Solar funnel tile clicked:', tileText);
                         }
+                        
+                        // Optional: Add small delay for animation
+                        // setTimeout(() => {
+                        //     window.location.href = this.getAttribute('href');
+                        // }, 300);
                     });
                     
                     tile.addEventListener('keydown', function(e) {
                         if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
                             this.click();
                         }
                     });
